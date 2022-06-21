@@ -1,12 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './components/HomeScreen';
+import AboutScreen from './components/AboutScreen';
+import AccountScreen from './components/AccountScreen';
 
-export default function App() {
+
+const Tab = createMaterialBottomTabNavigator();
+
+function TabNav() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+  <NavigationContainer>
+      <Tab.Navigator initialRouteName="Home" 
+       barStyle={{ backgroundColor: 'tomato' }}
+       activeColor="black"
+       inactiveColor="white">
+        <Tab.Screen name="Home" component={HomeScreen}  />
+        <Tab.Screen name="About" component={AboutScreen} />
+        <Tab.Screen name="Account" component={AccountScreen}  />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
+
+const app = () => {
+  return (
+        <TabNav/>
   );
 }
 
@@ -18,3 +39,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default app;
