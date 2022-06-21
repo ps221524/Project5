@@ -19,8 +19,8 @@ class Performance extends Migration
             $table->foreign('exercise_id')->references('id')->on('exercise');
             $table->unsignedBigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('reps', 10);
-            $table->integer('sets', 10);
+            $table->integer('reps');
+            $table->integer('sets');
         });
     }
 
