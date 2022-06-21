@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController; 
+use App\Http\Controllers\ExerciseController; 
+use App\Http\Controllers\PerformanceController; 
 
 
 /*
@@ -23,12 +25,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/register', [AuthenticationController::class, 'register']);
 Route::post('/login', [AuthenticationController::class, 'login']);
 
-Route::apiResource('exercise', Exercise::class)
+Route::apiResource('exercise', ExerciseController::class)
     ->parameters(['exercise' => 'exerciese'])
     ->only(['index', 'show']);
 
 ;
-Route::apiResource('performance', Performance::class)
+Route::apiResource('performance', PerformanceController::class)
     ->parameters(['preformance' => 'performance'])
     ->only(['index', 'show']);
 

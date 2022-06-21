@@ -14,7 +14,7 @@ class PerformanceController extends Controller
      */
     public function index()
     {
-        //
+        return Performance::All();
     }
 
     /**
@@ -31,22 +31,22 @@ class PerformanceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\EPerformance  $ePerformance
+     * @param  \App\Models\Performance  $Performance
      * @return \Illuminate\Http\Response
      */
-    public function show(EPerformance $ePerformance)
+    public function show(Performance $performance)
     {
-        //
+        return $performance;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\EPerformance  $ePerformance
+     * @param  \App\Models\Performance  $Performance
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EPerformance $ePerformance)
+    public function update(Request $request, Performance $performance)
     {
         //
     }
@@ -54,10 +54,10 @@ class PerformanceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\EPerformance  $ePerformance
+     * @param  \App\Models\Performance  $Performance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EPerformance $ePerformance)
+    public function destroy(Performance $performance)
     {
         //
     }
