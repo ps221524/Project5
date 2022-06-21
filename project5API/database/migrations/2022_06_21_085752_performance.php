@@ -13,7 +13,15 @@ class Performance extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('performance', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('exercise_id')->unsigned()->nullable();
+            $table->foreign('exercise_id')->references('id')->on('exercise');
+            $table->unsignedBigInteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('reps', 10);
+            $table->integer('sets', 10);
+        });
     }
 
     /**
@@ -23,6 +31,6 @@ class Performance extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('performance');
     }
 }
