@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Oefening;
+use App\Models\Performance;
 use Illuminate\Http\Request;
 
-class OefeningController extends Controller
+class PerformanceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class OefeningController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Oefening  $oefening
+     * @param  \App\Models\EPerformance  $ePerformance
      * @return \Illuminate\Http\Response
      */
-    public function show(Oefening $oefening)
+    public function show(EPerformance $ePerformance)
     {
         //
     }
@@ -43,10 +43,10 @@ class OefeningController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Oefening  $oefening
+     * @param  \App\Models\EPerformance  $ePerformance
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Oefening $oefening)
+    public function update(Request $request, EPerformance $ePerformance)
     {
         //
     }
@@ -54,10 +54,10 @@ class OefeningController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Oefening  $oefening
+     * @param  \App\Models\EPerformance  $ePerformance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Oefening $oefening)
+    public function destroy(EPerformance $ePerformance)
     {
         //
     }
