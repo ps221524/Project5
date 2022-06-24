@@ -12,7 +12,7 @@ function Home({navigation}) {
 
   const getApi = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/exercise');
+      const response = await fetch('http://10.0.2.2:8000/api/exercise');
       const json = await response.json();
       setData(json);
     } catch (error) {
@@ -26,24 +26,23 @@ function Home({navigation}) {
     getApi();
   }, []);
     return (
-        <View>
+        <View style={styles.list}>
           {isLoading ? <ActivityIndicator/> : (
               <FlatList
                   data={data}
                   keyExtractor={({ id }, index) => id}
                   renderItem={({ item }) => (
-                      <TouchableOpacity onPress={() => navigation.navigate('Details', {
-                          id: item.id,
-                          name: item.name,
-                      })}>
+                      // <TouchableOpacity onPress={() => navigation.navigate('Details', {
+                      //     id: item.id,
+                      //     name: item.name
+                      // })}>
                         <View style={styles.itemborder}>
-                           
                             <View>
-
+                              <Text style={styles.title}> {item.name} </Text>
                             </View>
-                          <Text style={styles.item} >{item.name}</Text>
+                          <Text>{item.description}</Text>
                         </View>
-                      </TouchableOpacity>
+                      // </TouchableOpacity>
                   )}
               />
           )}
@@ -57,16 +56,30 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+   
   },
 
-item: {
-  fontSize: 30,
-  marginLeft: 15,
-  marginRight: 15,
-  width: 100,
-  textAlign:'center',
-  height: 50,
-},
+  title: {
+    fontSize: 30,
+    marginLeft: 15,
+    marginRight: 15,
+    height: 60,
+    textAlign:'center',
+  },
+
+   itemborder: {
+    borderStyle: 'solid',
+    borderWidth: 2,
+    borderColor: 'tomato',
+    alignContent:'center',
+    alignSelf:'center',
+    marginTop: 20,
+    borderRadius: 10,
+    marginLeft: 30,
+    marginRight: 30,
+    minWidth: 350,
+   },
+
 });
 
 export default Home
