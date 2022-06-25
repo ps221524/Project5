@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController; 
 use App\Http\Controllers\ExerciseController; 
 use App\Http\Controllers\PerformanceController; 
+use App\Http\Controllers\AuthenticationController;
 
 
 /*
