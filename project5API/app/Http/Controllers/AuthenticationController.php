@@ -33,6 +33,7 @@ class AuthenticationController extends Controller
         }
         $response = [
             'access_token' => auth()->user()->createToken('API Token')->plainTextToken,
+            'user' => Auth::id(), 
             'token_type' => 'Bearer'
         ];
         return response()->json($response, 200);

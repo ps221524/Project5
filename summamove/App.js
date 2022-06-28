@@ -6,11 +6,15 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './components/HomeScreen';
 import AboutScreen from './components/AboutScreen';
 import AccountScreen from './components/AccountScreen';
-
+import Profile from './components/Profile';
+const token = localStorage.getItem('access_token');
 
 const Tab = createMaterialBottomTabNavigator();
 
 function TabNav() {
+
+  if(!token) {
+
   return (
   <NavigationContainer>
       <Tab.Navigator initialRouteName="Home" 
@@ -19,10 +23,26 @@ function TabNav() {
        inactiveColor="white">
         <Tab.Screen name="Home" component={HomeScreen}  />
         <Tab.Screen name="About" component={AboutScreen} />
-        <Tab.Screen name="Account" component={AccountScreen}  />
+        
+        <Tab.Screen name="login" component={AccountScreen}  />
       </Tab.Navigator>
     </NavigationContainer>
   );
+  }
+  else{
+    return (
+      <NavigationContainer>
+    <Tab.Navigator initialRouteName="Home" 
+    barStyle={{ backgroundColor: 'tomato' }}
+    activeColor="black"
+    inactiveColor="white">
+     <Tab.Screen name="Home" component={HomeScreen}  />
+     <Tab.Screen name="About" component={AboutScreen} />
+     <Tab.Screen name="Account" component={Profile}  />
+   </Tab.Navigator>
+   </NavigationContainer>
+    );
+  }
 }
 
 const app = () => {
