@@ -25,7 +25,7 @@ class PerformanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Performance::create($request->all());
     }
 
     /**
@@ -48,7 +48,7 @@ class PerformanceController extends Controller
      */
     public function update(Request $request, Performance $performance)
     {
-        //
+        $performance->update($request->all()); return $performance;
     }
 
     /**
@@ -59,6 +59,6 @@ class PerformanceController extends Controller
      */
     public function destroy(Performance $performance)
     {
-        //
+        $performance->delete();
     }
 }

@@ -25,7 +25,7 @@ class ExerciseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Exercise::create($request->all());
     }
 
     /**
@@ -48,7 +48,7 @@ class ExerciseController extends Controller
      */
     public function update(Request $request, Exercise $exercise)
     {
-        //
+        $exercise->update($request->all()); return $exercise;
     }
 
     /**
@@ -59,6 +59,6 @@ class ExerciseController extends Controller
      */
     public function destroy(Exercise $exercise)
     {
-        //
+        $exercise->delete();
     }
 }

@@ -38,10 +38,6 @@ Route::apiResource('performance', PerformanceController::class)
 ;
 
 
-
-
-
-
 route::group(['middleware' => ['auth:sanctum']], function () { 
     
 //protected routes
@@ -52,13 +48,13 @@ route::group(['middleware' => ['auth:sanctum']], function () {
 Route::apiResource('users', UserController::class)
 ->parameters(['users' => 'user']);
 
-Route::apiResource('performance', Performance::class)
-    ->parameters(['preformance' => 'performance'])
+Route::apiResource('performance', PerformanceController::class)
+    ->parameters(['performance' => 'performance'])
     ->except(['index', 'show']);
 
 ;
 
-Route::apiResource('exercise', Exercise::class)
+Route::apiResource('exercise', ExerciseController::class)
     ->parameters(['exercise' => 'exerciese'])
     ->except(['index', 'show']);
 
