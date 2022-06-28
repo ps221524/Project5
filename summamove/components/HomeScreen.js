@@ -5,14 +5,28 @@ import React, { Component, useEffect, useState } from 'react';
 import {ActivityIndicator, FlatList, Text, View, TouchableOpacity, Button, StyleSheet} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
+const Stack = createStackNavigator();
 
-function Home({navigation}) {
+function Home() {
+  return (
+  <Stack.Navigator initialRouteName="List"
+  barStyle={{ backgroundColor: 'tomato' }}
+  activeColor="black"
+  inactiveColor="white"
+  >
+  <Stack.Screen name="List2" component={List} options={{title: 'List'}}/>
+  <Stack.Screen name="Details" component={Details} />
+  </Stack.Navigator>
+  );
+  }
+
+function List({navigation}) {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
   const getApi = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/exercise');
+      const response = await fetch('http://10.0.2.2:8000/api/exercise');
       const json = await response.json();
       setData(json);
     } catch (error) {
@@ -32,22 +46,33 @@ function Home({navigation}) {
                   data={data}
                   keyExtractor={({ id }, index) => id}
                   renderItem={({ item }) => (
-                      // <TouchableOpacity onPress={() => navigation.navigate('Details', {
-                      //     id: item.id,
-                      //     name: item.name
-                      // })}>
+                     <TouchableOpacity onPress={() => navigation.navigate('Details', {
+                          id: item.id,
+                          name: item.name
+                       })}>
                         <View style={styles.itemborder}>
-                            <View>
-                              <Text style={styles.title}> {item.name} </Text>
-                            </View>
-                          <Text>{item.description}</Text>
+                        <View>
+                          <Text style={styles.title}>{item.name}</Text>
                         </View>
-                      // </TouchableOpacity>
+                          <Text>{item.description}</Text>
+                          </View>
+                       </TouchableOpacity>
                   )}
               />
           )}
         </View>
     );
+}
+
+function Details({route}) {
+ 
+  const { name } = route.params;
+
+  return (
+    <View >
+      <Text>{name}</Text>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
