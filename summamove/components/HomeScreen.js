@@ -12,7 +12,7 @@ function Home({navigation}) {
 
   const getApi = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/exercise');
+      const response = await fetch('http://localhost:8000/api/exercise');//voor de webbrowser 10.0.2.2 naar localhost
       const json = await response.json();
       setData(json);
     } catch (error) {
@@ -26,28 +26,27 @@ function Home({navigation}) {
     getApi();
   }, []);
     return (
-        <View style={styles.list}>
-          {isLoading ? <ActivityIndicator/> : (
-              <FlatList
-                  data={data}
-                  keyExtractor={({ id }, index) => id}
-                  renderItem={({ item }) => (
-                      // <TouchableOpacity onPress={() => navigation.navigate('Details', {
-                      //     id: item.id,
-                      //     name: item.name
-                      // })}>
-                        <View style={styles.itemborder}>
-                            <View>
-                              <Text style={styles.title}> {item.name} </Text>
-                            </View>
-                          <Text>{item.description}</Text>
-                        </View>
-                      // </TouchableOpacity>
-                  )}
-              />
-          )}
-        </View>
-    );
+      <View style={styles.list}>
+      {isLoading ? <ActivityIndicator/> : (
+          <FlatList
+              data={data}
+              keyExtractor={({ id }, index) => id}
+              renderItem={({ item }) => (
+                  <TouchableOpacity style={styles.itemborder} onPress={() => navigation.navigate('Details', {
+                       id: item.id,
+                       name: item.name
+                   })}>
+                   
+                          <Text style={styles.title}> {item.name} </Text>
+                        
+                      <Text>{item.description}</Text>
+
+                   </TouchableOpacity>
+              )}
+          />
+      )}
+    </View>
+);
 }
 
 const styles = StyleSheet.create({
