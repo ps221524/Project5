@@ -20,6 +20,7 @@ function Home() {
   );
   }
 
+  
 function List({navigation}) {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
