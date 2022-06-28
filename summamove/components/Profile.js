@@ -6,9 +6,16 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+const token = localStorage.getItem('access_token');
+const user_id = localStorage.getItem('user_id');
+
+
+
+
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,7 +49,7 @@ export default function Profile() {
 
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
-    localStorage.removeItem("user");
+    localStorage.removeItem("user_id");
     window.location.href = "/";
   };
 
@@ -54,9 +61,6 @@ export default function Profile() {
             Profile
           </Typography>
             <div>
-            <IconButton onClick={handleMenu} color="inherit">
-              <Avatar src={user.avatar} />
-            </IconButton>
             <Menu id="menu-appbar" 
               anchorEl={anchorEl} 
               open={open}
@@ -69,9 +73,8 @@ export default function Profile() {
       </AppBar>
       <Card className={classes.root} variant="outlined">
         <CardContent>
-          <Avatar src={user.avatar} className={classes.large} />
           <Typography variant="h5">
-          Welcome {user.fname} {user.lname}
+          Welcome {user.name}
           </Typography>
         </CardContent>
       </Card>

@@ -64,6 +64,7 @@ export default function Signin() {
       })
       .then((value) => {
         localStorage.setItem('access_token', response['access_token']);
+        localStorage.setItem('user_id', response['user_id']);
         window.location.href = "/profile";
       });
     } else {
