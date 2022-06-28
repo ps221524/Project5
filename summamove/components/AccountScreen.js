@@ -38,6 +38,7 @@ async function loginUser(credentials) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
+      
     },
     body: JSON.stringify(credentials)
   })
@@ -46,27 +47,28 @@ async function loginUser(credentials) {
 
 export default function Signin() {
   const classes = useStyles();
-  const [username, setUserName] = useState();
+  const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
   const handleSubmit = async e => {
-    e.preventDefault();
+    e.preventDefault(); // zorgt er voor dat de submit niet doorgestuurd.
     const response = await loginUser({
-      username,
+      email,
       password
     });
-    if ('accessToken' in response) {
-      swal("Success", response.message, "success", {
+    if ('access_token' in response) {
+      //geeft een succes melding
+      swal("success", {
         buttons: false,
         timer: 2000,
       })
       .then((value) => {
-        localStorage.setItem('accessToken', response['accessToken']);
-        localStorage.setItem('user', JSON.stringify(response['user']));
+        localStorage.setItem('access_token', response['access_token']);
         window.location.href = "/profile";
       });
     } else {
-      swal("Failed", response.message, "error");
+      //geeft een failed melding
+      swal("incorrect email/wachtwoord")
     }
   }
 
@@ -87,7 +89,7 @@ export default function Signin() {
               id="email"
               name="email"
               label="Email Addres"
-              onChange={e => setUserName(e.target.value)}
+              onChange={e => setEmail(e.target.value)}
             />
             <TextField
               variant="outlined"
