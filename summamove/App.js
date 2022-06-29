@@ -17,14 +17,16 @@ function TabNav() {
 
   return (
   <NavigationContainer>
-      <Tab.Navigator initialRouteName="Home" 
+     <Tab.Navigator initialRouteName="Home" 
        barStyle={{ backgroundColor: 'tomato' }}
        activeColor="black"
        inactiveColor="white">
-        <Tab.Screen name="Home" component={HomeScreen}  />
+        <Tab.Screen name="Home" component={MyStack} 
+         options={{
+          tabBarLabel: 'Home',
+        }} />
         <Tab.Screen name="About" component={AboutScreen} />
-        
-        <Tab.Screen name="login" component={AccountScreen}  />
+        <Tab.Screen name="Account" component={AccountScreen}  />
       </Tab.Navigator>
     </NavigationContainer>
   );
@@ -43,6 +45,23 @@ function TabNav() {
    </NavigationContainer>
     );
   }
+}
+
+const MyStack = () => {
+  return(
+    
+    <Stack.Navigator
+    screenOptions={{
+      headerShown: false
+    }}>
+      <Stack.Screen
+      name='exersices'
+      component={HomeScreen}/>
+      <Stack.Screen
+      name='details'
+      component={Details}/>
+    </Stack.Navigator>
+  )
 }
 
 const app = () => {
