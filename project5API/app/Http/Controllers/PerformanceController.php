@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Performance;
+use App\Models\User;
 use Illuminate\Http\Request;
+
 
 class PerformanceController extends Controller
 {
@@ -30,13 +32,13 @@ class PerformanceController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  \App\Models\Performance  $Performance
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Performance $performance)
+    public function show($id)
     {
-        return $performance;
+
+        User::find($id)->preformance()->attach($request->input('user_id'));
     }
 
     /**

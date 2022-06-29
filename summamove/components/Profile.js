@@ -3,19 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 const token = localStorage.getItem('access_token');
-const user_id = localStorage.getItem('user_id');
-
-
-
-
-
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,10 +40,12 @@ export default function Profile() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("user_id");
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("user");
     window.location.href = "/";
   };
+
+  
 
   return (
     <div className={classes.root}>
@@ -61,13 +55,7 @@ export default function Profile() {
             Profile
           </Typography>
             <div>
-            <Menu id="menu-appbar" 
-              anchorEl={anchorEl} 
-              open={open}
-              onClose={handleClose}
-            >
-              <MenuItem onClick={handleLogout}>Logout</MenuItem>
-            </Menu>
+            <button onClick={handleLogout}>log uit</button>
           </div>
         </Toolbar>
       </AppBar>

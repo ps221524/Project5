@@ -9,7 +9,12 @@ class Performance extends Model
 {
     use HasFactory;
     protected $table = 'performance';
-    protected $fillable = ["id", "exercise_id", "language", "description", "img", "user_id", "reps", "sets"];
+    protected $fillable = ["id", "exercise_id", "user_id", "reps", "sets"];
 
     public $timestamps = false;
+
+    public function Users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
