@@ -7,6 +7,7 @@ import HomeScreen from './components/HomeScreen';
 import AboutScreen from './components/AboutScreen';
 import AccountScreen from './components/AccountScreen';
 import Profile from './components/Profile';
+import Home from './components/HomeScreen';
 const token = localStorage.getItem('access_token');
 
 const Tab = createMaterialBottomTabNavigator();
@@ -21,7 +22,7 @@ function TabNav() {
        barStyle={{ backgroundColor: 'tomato' }}
        activeColor="black"
        inactiveColor="white">
-        <Tab.Screen name="Home" component={MyStack} 
+        <Tab.Screen name="Home" component={Home} 
          options={{
           tabBarLabel: 'Home',
         }} />

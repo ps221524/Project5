@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 async function loginUser(credentials) {
-  return fetch('http://localhost:8000/api/login', {
+  return fetch('http://10.0.2.2:8000/api/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -116,3 +116,4 @@ export default function Signin() {
         </div>
   );
 }
+

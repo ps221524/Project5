@@ -8,7 +8,7 @@ import { AntDesign } from '@expo/vector-icons';
 const Stack = createStackNavigator();
 
 function Home() {
-  return (
+  return ( 
   <Stack.Navigator initialRouteName="List"
   barStyle={{ backgroundColor: 'tomato' }}
   activeColor="black"
@@ -20,14 +20,13 @@ function Home() {
   );
   }
 
-  
 function List({navigation}) {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
   const getApi = async () => {
     try {
-      const response = await fetch('http://10.0.2.2:8000/api/exercise');
+      const response = await fetch('http://localhost:8000/api/exercise');
       const json = await response.json();
       setData(json);
     } catch (error) {
@@ -49,13 +48,13 @@ function List({navigation}) {
                   renderItem={({ item }) => (
                      <TouchableOpacity onPress={() => navigation.navigate('Details', {
                           id: item.id,
-                          name: item.name
+                          name: item.name,
+                          description: item.description,
                        })}>
                         <View style={styles.itemborder}>
                         <View>
                           <Text style={styles.title}>{item.name}</Text>
                         </View>
-                          <Text>{item.description}</Text>
                           </View>
                        </TouchableOpacity>
                   )}
@@ -67,11 +66,12 @@ function List({navigation}) {
 
 function Details({route}) {
  
-  const { name } = route.params;
+  const { name, description } = route.params;
 
   return (
     <View >
-      <Text>{name}</Text>
+      <Text style={styles.head}>{name}</Text>
+      <Text style={styles.itemdetails}>{description}</Text>
     </View>
   )
 }
@@ -86,10 +86,9 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 30,
+    fontSize: 40,
     marginLeft: 15,
     marginRight: 15,
-    height: 60,
     textAlign:'center',
   },
 
@@ -99,13 +98,29 @@ const styles = StyleSheet.create({
     borderColor: 'tomato',
     alignContent:'center',
     alignSelf:'center',
-    marginTop: 20,
     borderRadius: 10,
-    marginLeft: 30,
-    marginRight: 30,
-    minWidth: 350,
+    margin: 20,
+    width: '80%',
    },
 
+   head: {
+    fontSize: 60,
+     textAlign: 'center',
+   },
+
+   item2: {
+    fontSize: 30,
+    marginLeft: 15,
+    marginRight: 15,
+    height: 50,
+    marginLeft: 15,
+  },
+
+  itemdetails: {
+    fontSize: 30,
+    alignContent:'center',
+    alignSelf:'center',
+  },
 });
 
 export default Home
