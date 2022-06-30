@@ -13,8 +13,9 @@ class Performance extends Model
 
     public $timestamps = false;
 
-    public function Users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
+
 }
