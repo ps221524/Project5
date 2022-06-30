@@ -37,8 +37,11 @@ class PerformanceController extends Controller
      */
     public function show($id)
     {
+        $blackboard = User::find($id)->Performance;
+        /*        ^               ^
+         This will get the user | This will get all the Orders related to the user*/
 
-        User::find($id)->preformance()->attach($request->input('user_id'));
+        return response()->json($blackboard);
     }
 
     /**
