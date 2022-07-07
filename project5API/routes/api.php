@@ -47,12 +47,12 @@ Route::apiResource('users', UserController::class)
 
 Route::apiResource('performance', PerformanceController::class)
     ->parameters(['performance' => 'performance'])
-    ->except(['index', 'show']);
+
 
 ;
 
 Route::apiResource('exercise', ExerciseController::class)
-    ->parameters(['exercise' => 'exerciese'])
+    ->parameters(['exercise' => 'exerciese']) ->except(['index', 'show']);
 
 ;
 
