@@ -26,7 +26,7 @@ function List({navigation}) {
 
   const getApi = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/exercise');
+      const response = await fetch('http://localhost:8000/api/exercise/');
       const json = await response.json();
       setData(json);
     } catch (error) {
