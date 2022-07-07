@@ -40,7 +40,15 @@ function List({navigation}) {
     getApi();
   }, []);
     return (
-        <View style={styles.list}>
+        <View>
+         <TouchableOpacity>
+         <View style={styles.itemborder}>
+         <Text style={styles.title2}>Klik om taal aantepassen</Text>        
+         </View>
+          </TouchableOpacity>
+         
+         <Text style={styles.title}>Oefeningen </Text>
+         
           {isLoading ? <ActivityIndicator/> : (
               <FlatList
                   data={data}
@@ -87,6 +95,13 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize: 40,
+    marginLeft: 15,
+    marginRight: 15,
+    textAlign:'center',
+  },
+
+  title2: {
+    fontSize: 20,
     marginLeft: 15,
     marginRight: 15,
     textAlign:'center',

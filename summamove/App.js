@@ -8,6 +8,7 @@ import AboutScreen from './components/AboutScreen';
 import AccountScreen from './components/AccountScreen';
 import Profile from './components/Profile';
 import Home from './components/HomeScreen';
+import TaalScreen from './components/TaalScreen';
 const token = localStorage.getItem('access_token');
 
 const Tab = createMaterialBottomTabNavigator();
@@ -41,28 +42,11 @@ function TabNav() {
     inactiveColor="white">
      <Tab.Screen name="Home" component={HomeScreen}  />
      <Tab.Screen name="About" component={AboutScreen} />
-     <Tab.Screen name="Account" component={Profile}  />
+     <Tab.Screen name="Account" component={Profile} />
    </Tab.Navigator>
    </NavigationContainer>
     );
   }
-}
-
-const MyStack = () => {
-  return(
-    
-    <Stack.Navigator
-    screenOptions={{
-      headerShown: false
-    }}>
-      <Stack.Screen
-      name='exersices'
-      component={HomeScreen}/>
-      <Stack.Screen
-      name='details'
-      component={Details}/>
-    </Stack.Navigator>
-  )
 }
 
 const app = () => {
