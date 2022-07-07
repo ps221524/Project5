@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Performance;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class PerformanceController extends Controller
@@ -37,11 +38,13 @@ class PerformanceController extends Controller
      */
     public function show($id)
     {
-        $blackboard = User::find($id)->Performance;
-        /*        ^               ^
-         This will get the user | This will get all the Orders related to the user*/
+        //$performance = User::find($id)->Performance;
 
-        return response()->json($blackboard);
+        $performance =  DB::select('SELECT * FROM exercise
+INNER JOIN performance
+ON exercise.id = performance.exercise_id WHERE performance.user_id = ?',    [$id] );
+
+        return response()->json($performance);
     }
 
     /**
