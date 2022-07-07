@@ -13,6 +13,11 @@ class ExerciseSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('exercise')->insert([
+            'name' => 'band1',
+            'language' => 'genre1',
+            'description' => '2021',
+            'img' => '2020',
+        ]);
     }
 }
