@@ -2,9 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController; 
-use App\Http\Controllers\ExerciseController; 
-use App\Http\Controllers\PerformanceController; 
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ExerciseController;
+use App\Http\Controllers\PerformanceController;
 use App\Http\Controllers\AuthenticationController;
 
 
@@ -31,15 +31,12 @@ Route::apiResource('exercise', ExerciseController::class)
     ->only(['index', 'show']);
 
 ;
-Route::apiResource('performance', PerformanceController::class)
-    ->parameters(['preformance' => 'performance'])
-    ->only(['index', 'show']);
 
 ;
 
 
-route::group(['middleware' => ['auth:sanctum']], function () { 
-    
+route::group(['middleware' => ['auth:sanctum']], function () {
+
 //protected routes
  Route::get('profile', function(Request $request) { auth()->user();});
  Route::post('/logout', [AuthenticationController::class, 'logout']);
@@ -56,7 +53,6 @@ Route::apiResource('performance', PerformanceController::class)
 
 Route::apiResource('exercise', ExerciseController::class)
     ->parameters(['exercise' => 'exerciese'])
-    ->except(['index', 'show']);
 
 ;
 
